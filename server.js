@@ -5,17 +5,39 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var ArticleOne= {
-    title:'article|Mohit jain',
+var arcticle={
+ 'article-one':{
+    title:'article one|Mohit jain',
     heading:'Article One',
     date: '16,th',
     content: `
     <p>
                 this is atice one.this is atice one.this is atice one.
-this is atice one.this is atice one.this is atice one.this is atice one.           
+this is aticle one.this is atice one.this is atice one.this is atice one.           
     </p> `
+ },
+ 'article-two':{
+      title:'article two|Mohit jain',
+    heading:'Article Two',
+    date: '10th feb',
+    content: `
+    <p>
+                this is atice Two.this is atice one.this is atice one.
+this is aticle one.this is atice one.this is atice one.this is atice one.           
+    </p> `
+ },
+ 'article-three':{
+     title:'article three|Mohit jain',
+    heading:'Article Two',
+    date: '10th feb',
+    content: `
+    <p>
+                this is atice Two.this is atice one.this is atice one.
+this is aticle one.this is atice one.this is atice one.this is atice one.           
+    </p> `
+}
 };
+
 function createTemplete(data){
  var title=data.title;
  var heading=data.heading;
@@ -58,19 +80,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
+app.get('/articleName',function(req,res){
+    var articlename=req.paramsarticeleName;
   res.send(createTemplete(ArticleOne));
 });
-app.get('/article-two',function(req,res){
- res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-app.get('/article-three',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-app.get('/ui/style.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
-});
-
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
