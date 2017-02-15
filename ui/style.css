@@ -20,3 +20,12 @@ body {
     height: 200px;
 }
 
+           .contain{
+                    max-width: 800px;
+                    font-family: chiller;
+                    color: grey;
+                    margin: 0 auto;
+                    padding-top: 10;
+                    padding-right: 10px;
+                    padding-left: 10px;
+}
