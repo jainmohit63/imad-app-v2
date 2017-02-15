@@ -5,12 +5,61 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+var ArticleOne= {
+    title:'article|Mohit jain',
+    heading:'Article One',
+    date: '16,th',
+    content: `
+    <p>
+                this is atice one.this is atice one.this is atice one.
+this is atice one.this is atice one.this is atice one.this is atice one.           
+    </p> `
+};
+function createTemplete(data){
+ var title=data.title;
+ var heading=data.heading;
+ var date=data.date;
+ var content=data.content;
+
+htmlTemplete=`
+<html>
+    <head>
+        <title>
+            ${title}
+        </title>
+        <meta name="viewpoint" content="width=device-width,initial-scale=1"/>
+         <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+<body>
+    <div class="contain">
+        <div>
+             <a href="/">HOME</a>
+        </div>
+        <hr/>
+        <h2>
+            ${heading}
+        </h2>
+        <div>
+            ${date}
+        </div>
+        <div>
+            <p>
+               ${content}          
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+`;
+return htmlTemplete;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+  res.send(createTemplete(ArticleOne));
 });
 app.get('/article-two',function(req,res){
  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
